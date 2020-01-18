@@ -1,10 +1,10 @@
-package com.example.firstattempt;
+package com.example.commentsapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class CommentsApplicationTests {
 
 	@Test
 	void contextLoads() {

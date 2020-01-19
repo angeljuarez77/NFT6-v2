@@ -14,14 +14,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         User.UserBuilder users = User.withDefaultPasswordEncoder();
         auth.inMemoryAuthentication().withUser(users.username("test").password("test").roles("ADMIN"));
+        auth.inMemoryAuthentication().withUser(users.username("dba").password("dba").roles("DBA"));
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").authenticated()
-                // .antMatchers("/ant/auth/**").authenticated()
+                // .antMatchers("/signup/**", "/login/**").permitAll()
+                // .antMatchers("/info/**").authenticated()
+                // .antMatchers("/**").authenticated()
+                .antMatchers("/role/**").hasRole("DBA")
                 .and()
                 .httpBasic();
     }

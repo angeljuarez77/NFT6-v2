@@ -4,4 +4,5 @@ import com.example.usersapi.models.User;
 
 public interface UserService {
     public Iterable<User> listUsers();
+    public User createUser(User newUser);
 }
